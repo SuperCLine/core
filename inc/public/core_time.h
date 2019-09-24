@@ -62,9 +62,10 @@ public:
 	static system_time_point_type& add_minute(system_time_point_type& tp, int64 m);
 	static system_time_point_type& add_second(system_time_point_type& tp, int64 s);
 	static system_time_point_type& add_millsecond(system_time_point_type& tp, int64 ms);
+	static system_time_point_type& add_microsecond(system_time_point_type& tp, int64 mms);
 
 	static void time_point_to_string(char* buf, std::size_t count, const char* format, const system_time_point_type& t);
-	static system_time_point_type string_to_time_point(const char* format, const char* buf);
+	static system_time_point_type string_to_time_point(const char* buf, const char* format = "%d-%d-%d %d:%d:%d");
 
 	// calendar time
 	static std::time_t get_calendar_time(void);

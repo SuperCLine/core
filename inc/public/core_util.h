@@ -45,7 +45,7 @@ public:
 
 	static void  to_lower(ustring& str);
 
-	static ustring to_string(bool val, bool yesNo = false);
+	static ustring to_string(bool val, bool yes_no = false);
 	static ustring to_string(int32 val, uint16 width = 0, char fill = ' ', std::ios::fmtflags flags = std::ios::fmtflags(0));
 	static ustring to_string(uint32 val, uint16 width = 0, char fill = ' ', std::ios::fmtflags flags = std::ios::fmtflags(0));
 	static ustring to_string(float32 val, uint16 precision = 6, uint16 width = 0, char fill = ' ', std::ios::fmtflags flags = std::ios::fmtflags(0));
@@ -56,19 +56,20 @@ public:
 	static uint32 parse_uint32(const ustring& val, uint32 default_val = 0);
 	static int32 parse_int32(const ustring& val, int32 default_val = 0);
 
-	static bool  starts_with(const ustring& str, const ustring& pattern, bool lowerCase = true);
+	static bool  starts_with(const ustring& str, const ustring& pattern, bool lower_case = true);
 
 	static void trim_right(ustring& str, const char* p);
 	static void trim_left(ustring& str, const char* p);
 	static void trim(ustring& str, const char* p = " \t\n\r");
 	static void cut_right(ustring& str, uint32 n);
 	static void cut_left(ustring& str, uint32 n);
-	static void replace(ustring& str, const ustring& oriStr, const ustring& newStr);
+	static void replace(ustring& str, const ustring& ori_str, const ustring& new_str);
 	static void replace(ustring& str, char oric, char newc);
 	static bool compare_nocase(const ustring& l, const ustring& r);
 
-	static uvector<ustring> split(const char* str, const char* seperator);
+	static uvector<ustring> split(const char* str, char delimiter);
 
+	// TO CLine: using std::filesystem::path at c++17
 	static ustring get_file_path(const char* path);
 	static ustring get_file_fullname(const char* path);
 	static ustring get_file_name(const char* path);
@@ -77,9 +78,20 @@ public:
 	static bool file_exist(const char* file);
 
 	static int32 random_int32(int32 max);
+	static int32 random_int32(int32 min, int32 max);
+	static float32 random_float32(float32 min, float32 max);
 	static float32 random_float32(void);
 };
 
+template<typename T>
+ustring util_to_hex(T i)
+{
+	std::stringstream stream;
+	stream << std::setfill('0') << std::setw(sizeof(T) * 2)
+		<< std::hex << i;
+
+	return stream.str();
+}
 
 __END_NAMESPACE
 

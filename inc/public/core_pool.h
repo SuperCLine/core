@@ -24,7 +24,7 @@
 __BEGIN_NAMESPACE
 
 
-template < typename T >
+template < class T >
 class interface_pool_garbager
 {
 public:
@@ -41,6 +41,11 @@ public:
 template < typename T >
 class default_pool_garbager : public interface_pool_garbager<T>
 {
+public:
+	typedef typename interface_pool_garbager<T>::pool_type				pool_type;
+	typedef typename interface_pool_garbager<T>::iterator_type			iterator_type;
+	typedef typename interface_pool_garbager<T>::const_iterator_type	const_iterator_type;
+
 public:
 	// half an hour to garbage memory
 	default_pool_garbager(size_t threshold = 0, float32 time = 1800.f) 
@@ -168,7 +173,7 @@ void core_pool<T, TMutexTraits>::clear(void)
 	}
 	app_assert(m_ref == 0);
 
-	for (ulist<T*>::const_iterator itr = m_pool.begin(); itr != m_pool.end(); ++itr)
+	for (auto itr = m_pool.begin(); itr != m_pool.end(); ++itr)
 	{
 		app_safe_delete(*itr);
 	}

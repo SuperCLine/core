@@ -38,6 +38,8 @@ public:
 	// 2^10 server num, 2^20 concurrent per second, 2^34 seconds base on "2019-09-09 05:02:09"
 	uint64 gen_uuid(void);
 
+	static ustring to_string(uint64 id);
+
 private:
 	int64 m_id;
 	int64 m_base_time;

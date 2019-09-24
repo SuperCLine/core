@@ -32,6 +32,7 @@
 #include <chrono>
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <fstream>
 #include <memory>
@@ -93,6 +94,7 @@ typedef wchar_t				unichar;
 #define app_floor		floor
 #define app_fabs		fabs
 
+
 #define app_dir_separator '\\'
 #define app_dir_separator_str "\\"
 #define app_dir_dot '.'
@@ -100,11 +102,9 @@ typedef wchar_t				unichar;
 
 
 #if defined(_UNICODE) || defined(UNICODE)
-#define app_strformat		sprintf_s
 #define app_file_exist		_waccess
 #define app_strmake(str)	L#str
 #else
-#define app_strformat		sprintf_s
 #define app_file_exist		_access		// 0: exist 2:write-only 4:read-only 6:read and write
 #define app_strmake(str)	#str
 #endif

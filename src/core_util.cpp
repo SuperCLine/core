@@ -36,15 +36,15 @@ void core_util::to_lower(ustring& str)
 		app_tolower);
 }
 
-ustring core_util::to_string(bool val, bool yesNo /*= false*/)
+ustring core_util::to_string(bool val, bool yes_no /*= false*/)
 {
 	if (val)
 	{
-		return yesNo ? "yes" : "true";
+		return yes_no ? "yes" : "true";
 	}
 	else
 	{
-		return yesNo ? "no" : "false";
+		return yes_no ? "no" : "false";
 	}
 }
 
@@ -134,30 +134,30 @@ int32 core_util::parse_int32(const ustring& val, int32 default_val /*= 0*/)
 	return ret;
 }
 
-bool core_util::starts_with(const ustring& str, const ustring& pattern, bool lowerCase /*= true*/)
+bool core_util::starts_with(const ustring& str, const ustring& pattern, bool lower_case /*= true*/)
 {
 	size_t thisLen = str.length();
 	size_t patternLen = pattern.length();
 	if (thisLen < patternLen || patternLen == 0)
 		return false;
 
-	ustring startOfThis = str.substr(0, patternLen);
-	if (lowerCase)
-		to_lower(startOfThis);
+	ustring start_of = str.substr(0, patternLen);
+	if (lower_case)
+		to_lower(start_of);
 
-	return (startOfThis == pattern);
+	return (start_of == pattern);
 }
 
 void core_util::trim_right(ustring& str, const char* p)
 {
 	if (!p) return;
 
-	size_t nPos = str.find_last_of(p);
+	size_t pos = str.find_last_of(p);
 
-	while (nPos != std::string::npos && nPos + 1 == str.size())
+	while (pos != std::string::npos && pos + 1 == str.size())
 	{
-		str = str.substr(0, nPos);
-		nPos = str.find_last_of(p);
+		str = str.substr(0, pos);
+		pos = str.find_last_of(p);
 	}
 }
 
@@ -193,31 +193,31 @@ void core_util::cut_left(ustring& str, uint32 n)
 	str.erase(0, n);
 }
 
-void core_util::replace(ustring& str, const ustring& oriStr, const ustring& newStr)
+void core_util::replace(ustring& str, const ustring& ori_str, const ustring& new_str)
 {
-	size_t nIdx = str.find(oriStr);
+	size_t index = str.find(ori_str);
 
-	while (nIdx != std::string::npos)
+	while (index != std::string::npos)
 	{
-		str.replace(str.begin() + nIdx, str.begin() + nIdx + oriStr.size(), newStr);
+		str.replace(str.begin() + index, str.begin() + index + ori_str.size(), new_str);
 
-		nIdx = str.find(oriStr, nIdx + newStr.size());
+		index = str.find(ori_str, index + new_str.size());
 	}
 }
 
 void core_util::replace(ustring& str, char oric, char newc)
 {
-	size_t nIdx = str.find(oric);
+	size_t index = str.find(oric);
 
-	while (nIdx != std::string::npos)
+	while (index != std::string::npos)
 	{
-		str.replace(str.begin() + nIdx, str.begin() + nIdx + 1, 1, newc);
+		str.replace(str.begin() + index, str.begin() + index + 1, 1, newc);
 
-		nIdx = str.find(oric, nIdx + 1);
+		index = str.find(oric, index + 1);
 	}
 }
 
-struct TComparePred //C++17 removed: public std::binary_function<std::string::value_type, std::string::value_type, bool> 
+struct TComparePred //TO CLine: C++17 removed public std::binary_function<std::string::value_type, std::string::value_type, bool> 
 {
 	bool operator()(std::string::value_type val, std::string::value_type itr_val)
 	{
@@ -230,7 +230,7 @@ bool core_util::compare_nocase(const ustring& l, const ustring& r)
 	return l.size() == r.size() && std::equal(l.begin(), l.end(), r.begin(), TComparePred());
 }
 
-uvector<ustring> split(const char* str, char delimiter)
+uvector<ustring> core_util::split(const char* str, char delimiter)
 {
 	uvector<ustring> tokens;
 	std::string token;
@@ -273,7 +273,7 @@ ustring core_util::get_file_basename(const char* name, char sep /*= '_'*/)
 	ustring tmp(name);
 	ustring::size_type pos = tmp.find_last_of(sep);
 
-	return tmp.substr(0, pos + 1);
+	return tmp.substr(0, pos);
 }
 
 ustring core_util::get_file_extension(const char* path)
@@ -290,16 +290,27 @@ bool core_util::file_exist(const char* file)
 	return (stat(file, &buffer) == 0);
 }
 
+int32 core_util::random_int32(int32 min, int32 max)
+{
+	static short inc = 1;
+	srand((uint32)core_time::get_calendar_time() + (inc++));
+	return min + rand() % (max - min);
+}
+
 int32 core_util::random_int32(int32 max)
 {
-	srand((uint32)core_time::get_calendar_time());
-	return rand() % max;
+	return random_int32(0, max);
+}
+
+float32 core_util::random_float32(float32 min, float32 max)
+{
+	srand((uint32)core_time::get_unix_nano(core_time::now()));
+	return min + (max - min) * rand() / ((float32)RAND_MAX);
 }
 
 float32 core_util::random_float32(void)
 {
-	srand((uint32)core_time::get_calendar_time());
-	return (float32)rand() / (float32)RAND_MAX;
+	return random_float32(0, 1);
 }
 
 __END_NAMESPACE

@@ -11,6 +11,10 @@ if (WIN32)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif ()
 
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_REQUIRED_FLAGS -std=c++17)
+# set_property(TARGET core PROPERTY CXX_STANDARD 17)
+
 target_include_directories(core PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/inc/private"
     "${CMAKE_CURRENT_SOURCE_DIR}/inc/public"
@@ -24,10 +28,10 @@ set_target_properties(core PROPERTIES
 cotire(core)
 
 install(TARGETS core
-    ARCHIVE DESTINATION lib
-    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/core
+    LIBRARY DESTINATION lib/core
     COMPONENT library
 )
 
 file(GLOB INCLUDES inc/public/*.h)
-install(FILES ${INCLUDES} DESTINATION include)
+install(FILES ${INCLUDES} DESTINATION include/core)

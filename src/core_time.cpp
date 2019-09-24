@@ -50,7 +50,13 @@ core_time::system_time_point_type& core_time::add_second(system_time_point_type&
 
 core_time::system_time_point_type& core_time::add_millsecond(system_time_point_type& tp, int64 ms)
 {
-	tp += std::chrono::microseconds(ms);
+	tp += std::chrono::milliseconds(ms);
+	return tp;
+}
+
+core_time::system_time_point_type& core_time::add_microsecond(system_time_point_type& tp, int64 mms)
+{
+	tp += std::chrono::microseconds(mms);
 	return tp;
 }
 
@@ -60,9 +66,9 @@ void core_time::time_point_to_string(char* buf, std::size_t count, const char* f
 	calendar_time_to_string(buf, count, format, to_local_calendar_time(&tt));
 }
 
-core_time::system_time_point_type core_time::string_to_time_point(const char* format, const char* buf)
+core_time::system_time_point_type core_time::string_to_time_point(const char* buf, const char* format/* = "%d-%d-%d %d:%d:%d"*/)
 {
-	std::tm tm;
+	std::tm tm = { 0 };
 	string_to_calendar_time(&tm, format, buf);
 	return core_time::system_time_point_type(std::chrono::system_clock::from_time_t(make_calendar_time(&tm)));
 }
@@ -148,7 +154,6 @@ const char* core_time::curtime_to_string(ETimeFlag flag/* = ETF_DOT*/)
 		calendar_time_to_string(g_szTime, 128, "%H-%M-%S", t);
 		break;
 	default:
-		app_strformat(g_szTime, "");
 		break;
 	}
 
