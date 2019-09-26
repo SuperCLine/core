@@ -109,6 +109,8 @@ typedef wchar_t				unichar;
 #define app_strmake(str)	#str
 #endif
 
+#define app_get_exedir ::GetModuleFileName
+#define app_create_dir ::CreateDirectory
 
 __END_NAMESPACE
 

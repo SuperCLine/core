@@ -23,18 +23,26 @@
 
 enum ELogType
 {
-	ELT_NONE = 0,
-	ELT_DEBUG,
-	ELT_WARNING,
+	ELT_DEBUG = 1,
+	ELT_INFO,
 	ELT_ERROR,
+	ELT_PERF,
 };
 
-class interface_log
+enum ELoggerType
+{
+	ELT_COSOLE = 0,
+	ELT_FILE_DEBUG,
+	ELT_FILE_INFO,
+	ELT_FILE_ERROR,
+	ELT_FILE_PERF,
+};
+
+class interface_logger
 {
 public:
-	virtual void log(ELogType type, const char* tag, const char* log) = 0;
-	virtual void logf(ELogType type, const char* tag, const char* format, ...) = 0;
-	virtual bool check(ELogType type, const char* tag) = 0;
+	virtual ELoggerType log_type(void) = 0;
+	virtual void log(ELogType type, const char* log) = 0;
 };
 
 class interface_logmgr

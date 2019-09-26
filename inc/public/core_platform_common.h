@@ -51,10 +51,10 @@ typedef ustringstreamc		ustringstream;
 #define udeque				std::deque
 #define ushared_ptr			std::shared_ptr
 
-#define app_sscanf			std::sscanf
-#define app_vsscanf			std::vsscanf
-#define app_snprintf		std::snprintf
-#define app_vsnprintf		std::vsnprintf
+#define app_sscanf			std::sscanf		//string to any
+#define app_vsscanf			std::vsscanf	//valist string to any
+#define app_snprintf		std::snprintf	//any to string
+#define app_vsnprintf		std::vsnprintf	//valist any to string
 
 #define app_safe_delete(p)		{ if (p) {delete (p);  (p) = NULL;} }
 #define app_safe_delete_array(p)	{ if (p) {delete [](p); (p) = NULL;} }

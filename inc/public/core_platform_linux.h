@@ -20,6 +20,7 @@
 #ifndef _CORE_PLATFORM_LINUX_H_
 #define _CORE_PLATFORM_LINUX_H_
 
+#include "unistd.h"
 
 #include <cstdio>
 #include <climits>
@@ -59,6 +60,8 @@ __BEGIN_NAMESPACE
 #define app_dir_dot '.'
 #define app_dir_dot_str "."
 
+#define app_get_exedir readlink
+#define app_create_dir mkdir
 
 __END_NAMESPACE
 

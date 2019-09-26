@@ -116,7 +116,7 @@ public:
 	core_workqueue(void) : m_next_channel(0) {}
 	virtual ~core_workqueue(void) {}
 
-	virtual void startup(bool force_restart = true) = 0;
+	virtual void startup(int32 thread_num = 4, bool force_restart = true) = 0;
 	virtual void add_request_handler(uint16 channel, request_handler* rh) = 0;
 	virtual void remove_request_handler(uint16 channel, request_handler* rh) = 0;
 	virtual void add_response_handler(uint16 channel, response_handler* rh) = 0;
@@ -243,7 +243,7 @@ protected:
 	void add_request_with_id(request_id_type rid, uint16 channel, uint16 rtype, void* rdata, uint8 retry_count);
 };
 
-class CORE_API core_default_workqueue : core_default_workqueue_base
+class CORE_API core_default_workqueue : public core_default_workqueue_base
 {
 public:
 	core_default_workqueue(const ustring& name = "");

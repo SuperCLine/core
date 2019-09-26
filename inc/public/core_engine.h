@@ -47,8 +47,8 @@ public:
 class CORE_API core_property : core_interface
 {
 public:
-	virtual ustring Serialize(void) = 0;
-	virtual bool Deserialize(const ustring& name) = 0;
+	virtual ustring serialize(void) = 0;
+	virtual bool deserialize(const ustring& name) = 0;
 };
 
 extern "C"
