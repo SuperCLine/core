@@ -2,23 +2,14 @@
 
 __BEGIN_NAMESPACE
 
-static interface_logmgr* g_logger = NULL;
-CORE_API void init_core(interface_logmgr* log)
+CORE_API void load_module_core(interface_logmgr* log)
 {
-	g_logger = log;
+	set_core_logger(log);
 }
 
-CORE_API interface_logmgr* get_logger(void)
+CORE_API void unload_module_core(void)
 {
-	return g_logger;
-}
-
-CORE_API void core_log(ELogType type, const char* tag, const char* log)
-{
-	if (g_logger)
-	{
-		g_logger->log(type, tag, log);
-	}
+	set_core_logger(0);
 }
 
 __END_NAMESPACE

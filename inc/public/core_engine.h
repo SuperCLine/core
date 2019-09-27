@@ -53,20 +53,9 @@ public:
 
 extern "C"
 {
-	CORE_API void init_core(interface_logmgr* log);
-	CORE_API interface_logmgr* get_logger(void);
-	CORE_API void core_log(ELogType type, const char* tag, const char* log);
-	
+	CORE_API void load_module_core(interface_logmgr* log);
+	CORE_API void unload_module_core(void);
 };
-
-template<typename... Args>
-void core_logf(ELogType type, const char* tag, const char* format, Args... args)
-{
-	if (get_logger())
-	{
-		get_logger()->logf(type, tag, format, args...);
-	}
-}
 
 __END_NAMESPACE
 

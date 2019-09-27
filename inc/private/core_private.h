@@ -20,6 +20,9 @@
 #ifndef _CORE_PRIVATE_H_
 #define _CORE_PRIVATE_H_
 
+#include "interface_log.h"
+#include "core_log.h"
+
 #include "core_public.h"
 
 

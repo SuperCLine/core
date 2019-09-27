@@ -39,7 +39,7 @@ public:
 
 // default implementation of pool garbage
 template < typename T >
-class default_pool_garbager : public interface_pool_garbager<T>
+class core_pool_garbager : public interface_pool_garbager<T>
 {
 public:
 	typedef typename interface_pool_garbager<T>::pool_type				pool_type;
@@ -48,7 +48,7 @@ public:
 
 public:
 	// half an hour to garbage memory
-	default_pool_garbager(size_t threshold = 0, float32 time = 1800.f) 
+	core_pool_garbager(size_t threshold = 0, float32 time = 1800.f)
 		: m_threshold(threshold), m_total_time(time), m_cur_time(0.f)
 	{}
 
@@ -65,7 +65,7 @@ public:
 			{
 				size_t num = util_max<size_t>((size_t)((pool.size() - m_threshold) * 0.5), 1);
 
-				const_iterator_type itr = pool.begin();
+				iterator_type itr = pool.begin();
 				for (size_t idx = 0; itr != pool.end() && idx < num; ++itr, ++idx)
 				{
 					app_safe_delete(*itr);
@@ -167,10 +167,6 @@ void core_pool<T, TMutexTraits>::clear(void)
 {
 	locker_type locker(m_mutex);
 
-	if (m_ref != 0)
-	{
-		core_logf(ELT_ERROR, "core", "memory leak at pool tag [%s], total count [%n]!!!", m_tag, m_ref);
-	}
 	app_assert(m_ref == 0);
 
 	for (auto itr = m_pool.begin(); itr != m_pool.end(); ++itr)

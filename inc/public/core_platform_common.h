@@ -56,6 +56,11 @@ typedef ustringstreamc		ustringstream;
 #define app_snprintf		std::snprintf	//any to string
 #define app_vsnprintf		std::vsnprintf	//valist any to string
 
+#define app_fopen			std::fopen
+#define app_fread			std::fread
+#define app_fclose			std::fclose
+#define app_memcpy			std::memcpy
+
 #define app_safe_delete(p)		{ if (p) {delete (p);  (p) = NULL;} }
 #define app_safe_delete_array(p)	{ if (p) {delete [](p); (p) = NULL;} }
 #define app_array_len(a)             ( sizeof(a) / sizeof(a[0]) )
