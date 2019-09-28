@@ -29,6 +29,7 @@
 #include "core_nocopyable.h"
 #include "core_singleton.h"
 #include "core_util.h"
+#include "core_scoped_ptr.h"
 
 #include "core_time.h"
 #include "core_mutex.h"
