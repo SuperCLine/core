@@ -41,6 +41,7 @@ enum ELoggerType
 class interface_logger
 {
 public:
+	virtual ~interface_logger(void) {}
 	virtual ELoggerType log_type(void) = 0;
 	virtual void log(ELogType type, const char* log) = 0;
 };
@@ -48,6 +49,7 @@ public:
 class interface_logmgr
 {
 public:
+	virtual ~interface_logmgr(void) {}
 	virtual bool init(const char* config) = 0;
 	virtual void log(ELogType type, const char* tag, const char* log) = 0;
 	virtual void logf(ELogType type, const char* tag, const char* format, ...) = 0;
