@@ -26,5 +26,4 @@
 #define __USE_NAMESPACE using namespace SuperCLine;
 
 
-#pragma 
 #endif //_CORE_BASE_H_

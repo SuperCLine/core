@@ -71,7 +71,7 @@ __BEGIN_NAMESPACE
 #define app_get_exedir readlink
 #define app_create_dir mkdir
 
-#define app_unreferenced(p)
+#define app_unreferenced(p) {(p)}
 
 __END_NAMESPACE
 
