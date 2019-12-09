@@ -30,7 +30,7 @@ core_workqueue::request::~request(void)
 
 
 core_workqueue::response::response(const request* rq, bool success, void* data, bool owndata /*= true*/, const ustring& msg /*= ""*/)
-: m_request(rq), m_success(success), m_messages(msg), m_own_data(owndata), m_data(data)
+: m_success(success), m_own_data(owndata), m_request(rq), m_data(data), m_messages(msg)
 {
 
 }
