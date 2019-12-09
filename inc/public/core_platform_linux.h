@@ -20,7 +20,7 @@
 #ifndef _CORE_PLATFORM_LINUX_H_
 #define _CORE_PLATFORM_LINUX_H_
 
-#include "unistd.h"
+#include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -73,7 +73,6 @@ __BEGIN_NAMESPACE
 #define app_file_exist		access		// 0: exist 2:write-only 4:read-only 6:read and write
 #endif
 
-#define app_get_exedir readlink
 #define app_create_dir mkdir
 
 #define app_unreferenced(p) ((void)(p))

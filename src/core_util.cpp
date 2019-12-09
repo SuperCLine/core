@@ -322,4 +322,19 @@ float32 core_util::random_float32(void)
 	return random_float32(0, 1);
 }
 
+bool core_util::get_exedir(char* exe_path, int32 path_len)
+{
+#if defined(_WIN32) || defined(WIN32)
+	return ::GetModuleFileName(NULL, exe_path, path_len);
+#else
+	int32 len = ::readlink("/proc/self/exe", exe_path, path_len - 1);
+	if (len != -1)
+	{
+		exe_path[len] = '\0';
+	}
+
+	return len != -1;
+#endif
+}
+
 __END_NAMESPACE

@@ -78,7 +78,6 @@ __BEGIN_NAMESPACE
 #define app_file_exist		_access		// 0: exist 2:write-only 4:read-only 6:read and write
 #endif
 
-#define app_get_exedir ::GetModuleFileName
 #define app_create_dir ::CreateDirectory
 
 #define app_unreferenced(p) UNREFERENCED_PARAMETER(p)

@@ -82,6 +82,8 @@ public:
 	static int32 random_int32(int32 min, int32 max);
 	static float32 random_float32(float32 min, float32 max);
 	static float32 random_float32(void);
+
+	static bool get_exedir(char* exe_path, int32 path_len);
 };
 
 template<typename T>
