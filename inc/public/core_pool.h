@@ -28,7 +28,7 @@ template < class T >
 class interface_pool_garbager
 {
 public:
-	typedef typename ulist<T*>					pool_type;
+	typedef ulist<T*>							pool_type;
 	typedef typename ulist<T*>::iterator		iterator_type;
 	typedef typename ulist<T*>::const_iterator	const_iterator_type;
 
@@ -41,11 +41,6 @@ public:
 template < typename T >
 class core_pool_garbager : public interface_pool_garbager<T>
 {
-public:
-	typedef typename interface_pool_garbager<T>::pool_type				pool_type;
-	typedef typename interface_pool_garbager<T>::iterator_type			iterator_type;
-	typedef typename interface_pool_garbager<T>::const_iterator_type	const_iterator_type;
-
 public:
 	// half an hour to garbage memory
 	core_pool_garbager(size_t threshold = 0, float32 time = 1800.f)
@@ -85,8 +80,8 @@ template <typename T, typename TMutexTraits = TLockerTraits>
 class core_pool : private nocopyable
 {
 public:
-	typedef typename T&  ref;
-	typedef typename T*  pointer;
+	typedef T&  ref;
+	typedef T*  pointer;
 
 	typedef typename TMutexTraits::mutex_type	mutex_type;
 	typedef typename TMutexTraits::locker_type	locker_type;
