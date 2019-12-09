@@ -1,6 +1,14 @@
 #include "stdafx.h"
 #include "core_workqueue.h"
 
+#if defined(_MSC_VER)
+#pragma warning(disable : 4251)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#pragma GCC diagnostic ignored "-Winvalid-pch"
+#pragma GCC diagnostic ignored "-Wdelete-incomplete"
+#endif
 
 __BEGIN_NAMESPACE
 
@@ -534,3 +542,9 @@ void core_default_workqueue::_thread_main()
 }
 
 __END_NAMESPACE
+
+#if defined(_MSC_VER)
+#pragma warning(default : 4251)
+#elif defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
