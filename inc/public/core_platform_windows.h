@@ -41,6 +41,7 @@
 #include <cstring>
 #include <cctype>
 #include <cwchar>
+#include <cstdarg>
 #include <new>
 
 #include <vector>

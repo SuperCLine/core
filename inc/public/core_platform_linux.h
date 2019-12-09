@@ -21,6 +21,8 @@
 #define _CORE_PLATFORM_LINUX_H_
 
 #include "unistd.h"
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #include <cstdio>
 #include <climits>
@@ -38,6 +40,7 @@
 #include <cstring>
 #include <cctype>
 #include <cwchar>
+#include <cstdarg>
 #include <new>
 
 #include <vector>
