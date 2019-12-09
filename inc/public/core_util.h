@@ -94,6 +94,26 @@ ustring util_to_hex(T i)
 	return stream.str();
 }
 
+template <class T>
+void util_safe_delete(T* p)
+{
+	if ((p))
+	{
+		delete (p);
+		(p) = NULL;
+	}
+}
+
+template <class T>
+void util_safe_delete_array(T* p)
+{
+	if ((p))
+	{
+		delete[](p);
+		(p) = NULL;
+	}
+}
+
 __END_NAMESPACE
 
 

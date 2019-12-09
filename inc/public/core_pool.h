@@ -38,9 +38,14 @@ public:
 };
 
 // default implementation of pool garbage
-template < typename T >
+template < class T >
 class core_pool_garbager : public interface_pool_garbager<T>
 {
+public:
+	typedef typename interface_pool_garbager<T>::pool_type				pool_type;
+	typedef typename interface_pool_garbager<T>::iterator_type			iterator_type;
+	typedef typename interface_pool_garbager<T>::const_iterator_type	const_iterator_type;
+
 public:
 	// half an hour to garbage memory
 	core_pool_garbager(size_t threshold = 0, float32 time = 1800.f)

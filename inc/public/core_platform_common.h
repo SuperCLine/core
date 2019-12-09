@@ -121,8 +121,8 @@ using umap_unordered = std::unordered_map<KEY, VAL>;
 #define app_makestr(str)	#str
 #endif
 
-#define app_safe_delete(p)		{ if (p) {delete (p);  (p) = NULL;} }
-#define app_safe_delete_array(p)	{ if (p) {delete [](p); (p) = NULL;} }
+#define app_safe_delete(p)             { if (p) {delete (p);  (p) = NULL;} }
+#define app_safe_delete_array(p)       { if (p) {delete [](p); (p) = NULL;} }
 #define app_array_len(a)             ( sizeof(a) / sizeof(a[0]) )
 
 #define app_cast_static(TYPE, EXPR) static_cast<TYPE>(EXPR)
