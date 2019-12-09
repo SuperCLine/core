@@ -68,7 +68,8 @@ void core_time::time_point_to_string(char* buf, std::size_t count, const char* f
 
 core_time::system_time_point_type core_time::string_to_time_point(const char* buf, const char* format/* = "%d-%d-%d %d:%d:%d"*/)
 {
-	std::tm tm = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	std::tm tm;
+	app_memset(&tm, 0, sizeof(tm));
 	string_to_calendar_time(&tm, format, buf);
 	return core_time::system_time_point_type(std::chrono::system_clock::from_time_t(make_calendar_time(&tm)));
 }
