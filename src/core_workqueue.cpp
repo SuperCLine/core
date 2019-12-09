@@ -40,6 +40,13 @@ core_workqueue::response::~response(void)
 	app_safe_delete(m_request);
 }
 
+void SuperCLine::core_workqueue::response::abort_request(void)
+{
+	m_request->abort_request();
+	if (m_own_data)
+		app_safe_delete(m_data);
+}
+
 core_default_workqueue_base::core_default_workqueue_base(const ustring& name /*= ""*/)
 : m_name(name)
 , m_is_running(false)

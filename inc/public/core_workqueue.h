@@ -25,6 +25,7 @@
 #elif defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#pragma GCC diagnostic ignored "-Winvalid-pch"
 #endif
 
 __BEGIN_NAMESPACE
@@ -83,12 +84,7 @@ public:
 		inline bool succeeded(void) const { return m_success; }
 		inline const ustring& get_messages(void) const { return m_messages; }
 		inline void* get_data(void) const { return m_data; }
-		inline void abort_request(void)
-		{
-			m_request->abort_request();
-			if (m_own_data)
-				app_safe_delete(m_data);
-		}
+		void abort_request(void);
 	};
 
 	class CORE_API request_handler
