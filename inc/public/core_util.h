@@ -44,6 +44,7 @@ public:
 	static float32 rad_to_deg(float32 rad);
 
 	static void  to_lower(ustring& str);
+	static void  to_upper(ustring& str);
 
 	static ustring to_string(bool val, bool yes_no = false);
 	static ustring to_string(int32 val, uint16 width = 0, char fill = ' ', std::ios::fmtflags flags = std::ios::fmtflags(0));

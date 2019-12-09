@@ -35,6 +35,9 @@
 #include <memory>
 #include <cmath>
 #include <cassert>
+#include <cstring>
+#include <cctype>
+#include <cwchar>
 #include <new>
 
 #include <vector>
@@ -42,6 +45,7 @@
 #include <map>
 #include <set>
 #include <deque>
+#include <unordered_map>
 #include <algorithm>
 #include <functional>
 #include <condition_variable>
@@ -54,14 +58,20 @@
 
 __BEGIN_NAMESPACE
 
-
 #define app_dir_separator '/'
 #define app_dir_separator_str "/"
 #define app_dir_dot '.'
 #define app_dir_dot_str "."
 
+#if defined(_UNICODE) || defined(UNICODE)
+#else
+#define app_file_exist		access		// 0: exist 2:write-only 4:read-only 6:read and write
+#endif
+
 #define app_get_exedir readlink
 #define app_create_dir mkdir
+
+#define app_unreferenced(p)
 
 __END_NAMESPACE
 

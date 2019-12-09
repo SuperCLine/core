@@ -40,6 +40,7 @@ public:
     ~core_scoped_ptr(void);
 
     T* detach(void);
+	T* get(void);
 
 private:
     T* m_ptr;
@@ -82,6 +83,12 @@ T* core_scoped_ptr<T, free_policy_type>::detach(void)
     m_ptr = 0;
 
     return p;
+}
+
+template <typename T, typename free_policy_type /*= EFreePolicy*/>
+T* core_scoped_ptr<T, free_policy_type>::get(void)
+{
+	return m_ptr;
 }
 
 

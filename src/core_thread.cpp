@@ -31,7 +31,7 @@ bool core_thread::start(void)
 	{
 		if (m_thread_impl->joinable())
 		{
-			core_log(ELT_ERROR, "core", "therad has not stopped yet.");
+			core_log(ELT_ERROR, "core", "thread has not stopped yet.");
 			return false;
 		}
 		m_thread_impl.reset();

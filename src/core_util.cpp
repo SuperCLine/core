@@ -33,7 +33,16 @@ void core_util::to_lower(ustring& str)
 		str.begin(),
 		str.end(),
 		str.begin(),
-		app_tolower);
+		[](uint8 c) -> uint8 { return (uint8)app_tolower(c); });
+}
+
+void core_util::to_upper(ustring& str)
+{
+	std::transform(
+		str.begin(),
+		str.end(),
+		str.begin(),
+		[](uint8 c) -> uint8 { return (uint8)app_toupper(c); });
 }
 
 ustring core_util::to_string(bool val, bool yes_no /*= false*/)

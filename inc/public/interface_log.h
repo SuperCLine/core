@@ -31,7 +31,7 @@ enum ELogType
 
 enum ELoggerType
 {
-	ELT_COSOLE = 0,
+	ELT_CONSOLE = 0,
 	ELT_FILE_DEBUG,
 	ELT_FILE_INFO,
 	ELT_FILE_ERROR,

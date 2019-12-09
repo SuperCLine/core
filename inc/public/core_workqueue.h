@@ -94,6 +94,7 @@ public:
 
 		virtual bool can_handle_request(const request* req, const core_workqueue* srcQ)
 		{
+			app_unreferenced(srcQ);
 			return !req->get_aborted();
 		}
 		virtual response* handle_request(const request* req, const core_workqueue* srcQ) = 0;
@@ -107,6 +108,7 @@ public:
 
 		virtual bool can_handle_response(const response* res, const core_workqueue* srcQ)
 		{
+			app_unreferenced(srcQ);
 			return !res->get_request()->get_aborted();
 		}
 		virtual void handle_response(const response* res, const core_workqueue* srcQ) = 0;
