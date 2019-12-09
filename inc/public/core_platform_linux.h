@@ -50,6 +50,8 @@
 #include <functional>
 #include <condition_variable>
 
+#include <thread>
+
 #define __DLL_EXPORT 
 #define __DLL_IMPORT 
 #define __LINK_LIB(import_lib)		comment(lib, import_lib)
@@ -71,7 +73,7 @@ __BEGIN_NAMESPACE
 #define app_get_exedir readlink
 #define app_create_dir mkdir
 
-#define app_unreferenced(p) {(p)}
+#define app_unreferenced(p) ((void)(p))
 
 __END_NAMESPACE
 

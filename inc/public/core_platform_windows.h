@@ -53,6 +53,8 @@
 #include <functional>
 #include <condition_variable>
 
+#include <thread>
+
 
 #define WIN32_LEAN_AND_MEAN
 #define __DLL_EXPORT				__declspec(dllexport)
