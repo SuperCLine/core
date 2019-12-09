@@ -40,7 +40,7 @@ core_workqueue::response::~response(void)
 	app_safe_delete(m_request);
 }
 
-void SuperCLine::core_workqueue::response::abort_request(void)
+void core_workqueue::response::abort_request(void)
 {
 	m_request->abort_request();
 	if (m_own_data)

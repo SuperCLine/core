@@ -105,9 +105,9 @@ ustring core_util::to_string(float64 val, uint16 precision /*= 6*/, uint16 width
 
 bool core_util::parse_bool(const ustring& val, bool default_val /*= 0*/)
 {
-	if ((starts_with(val, _T("true")) || starts_with(val, _T("yes")) || starts_with(val, _T("1"))))
+	if ((starts_with(val, app_makestr("true")) || starts_with(val, app_makestr("yes")) || starts_with(val, app_makestr("1"))))
 		return true;
-	else if ((starts_with(val, _T("false")) || starts_with(val, _T("no")) || starts_with(val, _T("0"))))
+	else if ((starts_with(val, app_makestr("false")) || starts_with(val, app_makestr("no")) || starts_with(val, app_makestr("0"))))
 		return false;
 	else
 		return default_val;
