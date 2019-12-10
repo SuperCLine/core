@@ -68,7 +68,8 @@ public:
 				iterator_type itr = pool.begin();
 				for (size_t idx = 0; itr != pool.end() && idx < num; ++itr, ++idx)
 				{
-					app_safe_delete(*itr);
+					//app_safe_delete(*itr);
+					util_safe_delete<T>(*itr);
 				}
 				pool.erase(pool.begin(), itr);
 			}
