@@ -171,7 +171,8 @@ void core_pool<T, TMutexTraits>::clear(void)
 
 	for (auto itr = m_pool.begin(); itr != m_pool.end(); ++itr)
 	{
-		app_safe_delete(*itr);
+		//app_safe_delete(*itr);
+		util_safe_delete<T>(*itr);
 	}
 
 	m_pool.clear();
