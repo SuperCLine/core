@@ -102,7 +102,7 @@ core_dumper::core_dumper(const char* dump_path, const char* dump_file)
 	{
 		if (!::CreateDirectory(g_dump_file, NULL))
 		{
-			core_logf(ELT_ERROR, "core", "failed to create dump directory \'%s\'!", g_dump_file);
+			core_logf(ELogType::Error, "core", "failed to create dump directory \'%s\'!", g_dump_file);
 			return;
 		}
 	}

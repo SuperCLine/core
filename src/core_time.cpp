@@ -102,7 +102,7 @@ void core_time::calendar_time_to_string(char* buf, std::size_t count, const char
 {
 	if (!std::strftime(buf, count, format, t))
 	{
-		core_log(ELT_ERROR, "core", "failed to format time!");
+		core_log(ELogType::Error, "core", "failed to format time!");
 	}
 }
 
@@ -139,19 +139,19 @@ const char* core_time::curtime_to_string(ETimeFlag flag/* = ETF_DOT*/)
 
 	switch (flag)
 	{
-	case ETF_ASC:
+	case ETimeFlag::ASC:
 		app_strcpy(g_szTime, std::asctime(t));
 		break;
-	case ETF_DOT:
+	case ETimeFlag::DOT:
 		calendar_time_to_string(g_szTime, 128, "%Y.%m.%d-%H.%M.%S", t);
 		break;
-	case ETF_COLON:
+	case ETimeFlag::COLON:
 		calendar_time_to_string(g_szTime, 128, "%Y-%m-%d %H:%M:%S", t);
 		break;
-	case ETF_YMD:
+	case ETimeFlag::YMD:
 		calendar_time_to_string(g_szTime, 128, "%Y-%m-%d", t);
 		break;
-	case ETF_HMS:
+	case ETimeFlag::HMS:
 		calendar_time_to_string(g_szTime, 128, "%H-%M-%S", t);
 		break;
 	default:

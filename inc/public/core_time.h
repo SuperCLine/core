@@ -3,7 +3,7 @@
 | COPYRIGHT (C) 2018 - 2026 All Right Reserved
 |
 | FILE NAME  : \core\inc\public\core_time.h
-| AUTHOR     : CLine
+| AUTHOR     : https://supercline.com/
 | PURPOSE    :
 |
 | SPEC       :
@@ -12,7 +12,7 @@
 |
 | Ver      Date            By              Details
 | -----    -----------    -------------   ----------------------
-| 1.0      2019-9-20      CLine           Created
+| 1.0      2019-9-20      SuperCLine           Created
 |
 +-----------------------------------------------------------------------------*/
 
@@ -23,13 +23,13 @@
 
 __BEGIN_NAMESPACE
 
-enum ETimeFlag
+enum class ETimeFlag :uint8
 {
-	ETF_ASC = 0,	//Www Mmm dd hh:mm:ss yyyy
-	ETF_DOT,		//yyyy.MM.dd-hh.mm.ss
-	ETF_COLON,		//yyyy-MM-dd hh:mm:ss
-	ETF_YMD,		//yyyy-MM-dd
-	ETF_HMS,		//hh-mm-ss
+	ASC = 0,	//Www Mmm dd hh:mm:ss yyyy
+	DOT,		//yyyy.MM.dd-hh.mm.ss
+	COLON,		//yyyy-MM-dd hh:mm:ss
+	YMD,		//yyyy-MM-dd
+	HMS,		//hh-mm-ss
 };
 
 class CORE_API core_time
@@ -79,7 +79,7 @@ public:
 	static void string_to_calendar_time(std::tm* t, const char* format, const char* buf);
 	static void string_to_calendar_time(std::tm* t, int32 year, int32 month, int32 day, int32 hour = 0, int32 minute = 0, int32 second = 0);
 
-	static const char* curtime_to_string(ETimeFlag flag = ETF_DOT);
+	static const char* curtime_to_string(ETimeFlag flag = ETimeFlag::DOT);
 };
 
 __END_NAMESPACE

@@ -3,7 +3,7 @@
 | COPYRIGHT (C) 2018 - 2026 All Right Reserved
 |
 | FILE NAME  : \core\inc\public\core_uuid.h
-| AUTHOR     : CLine
+| AUTHOR     : https://supercline.com/
 | PURPOSE    :
 |
 | SPEC       :
@@ -12,7 +12,7 @@
 |
 | Ver      Date            By              Details
 | -----    -----------    -------------   ----------------------
-| 1.0      2019-9-22      CLine           Created
+| 1.0      2019-9-22      SuperCLine           Created
 |
 +-----------------------------------------------------------------------------*/
 

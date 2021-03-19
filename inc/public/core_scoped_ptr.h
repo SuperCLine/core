@@ -3,7 +3,7 @@
 | COPYRIGHT (C) 2018 - 2026 All Right Reserved
 |
 | FILE NAME  : \core\inc\public\core_scoped_ptr.h
-| AUTHOR     : CLine
+| AUTHOR     : https://supercline.com/
 | PURPOSE    :
 |
 | SPEC       :
@@ -12,7 +12,7 @@
 |
 | Ver      Date            By              Details
 | -----    -----------    -------------   ----------------------
-| 1.0      2019-9-28      CLine           Created
+| 1.0      2019-9-28      SuperCLine           Created
 |
 +-----------------------------------------------------------------------------*/
 
@@ -24,11 +24,11 @@
 __BEGIN_NAMESPACE
 
 
-enum EFreePolicy
+enum class EFreePolicy :uint8
 {
-    EFP_DELETE,
-    EFP_DELETEARRAY,
-    EFP_RELEASE,
+	Delete = 1,
+	Deletearray = 2,
+	Release = 3,
 };
 
 

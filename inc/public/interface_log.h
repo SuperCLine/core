@@ -3,7 +3,7 @@
 | COPYRIGHT (C) 2018 - 2026 All Right Reserved
 |
 | FILE NAME  : \core\inc\public\interface_log.h
-| AUTHOR     : CLine
+| AUTHOR     : https://supercline.com/
 | PURPOSE    :
 |
 | SPEC       :
@@ -12,7 +12,7 @@
 |
 | Ver      Date            By              Details
 | -----    -----------    -------------   ----------------------
-| 1.0      2019-9-20      CLine           Created
+| 1.0      2019-9-20      SuperCLine           Created
 |
 +-----------------------------------------------------------------------------*/
 
@@ -20,22 +20,21 @@
 #ifndef _INTERFACE_LOG_H_
 #define _INTERFACE_LOG_H_
 
-
-enum ELogType
+enum class ELogType :unsigned char
 {
-	ELT_DEBUG = 1,
-	ELT_INFO,
-	ELT_ERROR,
-	ELT_PERF,
+	Debug = 1,
+	Info = 2,
+	Error = 3,
+	Perf = 4,
 };
 
-enum ELoggerType
+enum class ELoggerType :unsigned char
 {
-	ELT_CONSOLE = 0,
-	ELT_FILE_DEBUG,
-	ELT_FILE_INFO,
-	ELT_FILE_ERROR,
-	ELT_FILE_PERF,
+	Console = 0,
+	FileDebug = 1,
+	FileInfo = 2,
+	FileError = 3,
+	FilePerf = 4,
 };
 
 class interface_logger
